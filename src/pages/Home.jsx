@@ -1,6 +1,7 @@
 import { Helmet } from "@dr.pogodin/react-helmet";
 import { Link } from "react-router-dom";
 import Container from "../components/Container.jsx";
+import ReviewsSlider from "../components/ReviewsSlider.jsx";
 
 export default function Home() {
   return (
@@ -160,6 +161,7 @@ export default function Home() {
     </div>
   </Container>
 </section>
+<ReviewsSlider />
 
     </>
   );
