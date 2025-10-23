@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>FlipMobile — Buy • Sell • Repair Phones</title>
+        <title>ReadTech — Buy • Sell • Repair Phones</title>
         <meta
           name="description"
           content="Fast quotes, fair prices, and same-day repairs. Visit our shop or use our mail-in service."
@@ -64,7 +64,7 @@ export default function Home() {
         Honest prices. Same-day repairs. Fully tested devices.
       </h2>
       <p className="mt-4 text-lg text-gray-700">
-        At <span className="font-semibold">FlipMobile</span>, we make buying, selling, and repairing phones
+        At <span className="font-semibold">ReadTech</span>, we make buying, selling, and repairing phones
         quick and transparent. Visit us in-store or use our secure mail-in service —
         we’ll handle the rest.
       </p>
