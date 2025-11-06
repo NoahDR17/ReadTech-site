@@ -1,11 +1,11 @@
 import { useMemo, useState, useEffect } from "react";
 
 const DEFAULT_REVIEWS = [
-  { id: 1, name: "Alex P.", rating: 5, text: "Super quick screen replacement and friendly staff. In and out in under an hour!", source: "Google Reviews", date: "Sep 2025" },
-  { id: 2, name: "Hannah W.", rating: 5, text: "Sold my old iPhone for a fair price. Bank transfer hit my account the same day.", source: "Google Reviews", date: "Aug 2025" },
-  { id: 3, name: "Mohammed R.", rating: 5, text: "Battery swap was fast and my phone feels brand new. Highly recommend.", source: "Google Reviews", date: "Aug 2025" },
-  { id: 4, name: "Grace T.", rating: 4, text: "Good selection of refurbished phones. Staff helped me move my data too.", source: "Google Reviews", date: "Jul 2025" },
-  { id: 5, name: "Dan K.", rating: 5, text: "Transparent pricing and they actually kept me updated. Great service.", source: "Google Reviews", date: "Jun 2025" },
+  { id: 1, name: "Alex P.", rating: 5, text: "Sold my cracked iPhone 12 and got a great price. Payment arrived the same day!", source: "Google Reviews", date: "Sep 2025" },
+  { id: 2, name: "Hannah W.", rating: 5, text: "Best price I found for my old Samsung. The whole process was easy and transparent.", source: "Google Reviews", date: "Aug 2025" },
+  { id: 3, name: "Mohammed R.", rating: 5, text: "My phone had water damage but they still bought it. Quick payment via bank transfer.", source: "Google Reviews", date: "Aug 2025" },
+  { id: 4, name: "Grace T.", rating: 4, text: "Fair quote for my broken Pixel. They explained everything clearly and payment was fast.", source: "Google Reviews", date: "Jul 2025" },
+  { id: 5, name: "Dan K.", rating: 5, text: "Sold three old phones to them. Honest pricing and they kept me updated throughout.", source: "Google Reviews", date: "Jun 2025" },
 ];
 
 function Stars({ count = 5 }) {
@@ -55,7 +55,7 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec = 30
         {/* Header */}
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">What customers say</h2>
-          <p className="text-gray-700 mt-2">Real reviews from people who bought, sold, or repaired with us.</p>
+          <p className="text-gray-700 mt-2">Real reviews from people who sold their phones to us.</p>
         </div>
 
         {/* Marquee viewport */}

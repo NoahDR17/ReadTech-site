@@ -12,10 +12,10 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact — FlipMobile</title>
+        <title>Contact — PhoneFlip</title>
         <meta
           name="description"
-          content="Find our shop location, opening hours, and ways to get in touch."
+          content="Find our shop location, opening hours, and ways to get in touch to sell your phone."
         />
       </Helmet>
 

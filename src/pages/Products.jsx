@@ -1,82 +1,113 @@
 import { Helmet } from "@dr.pogodin/react-helmet";
-import { useMemo, useState } from "react";
 import Container from "../components/Container.jsx";
 import { Link } from "react-router-dom";
 
 export default function Products() {
-  const [q, setQ] = useState("");
-  const [sort, setSort] = useState("recent");
+  const brands = [
+    { name: "Apple", models: "iPhone 8 and newer", icon: "🍎" },
+    { name: "Samsung", models: "Galaxy S8 and newer, Note series", icon: "📱" },
+    { name: "Google", models: "Pixel 2 and newer", icon: "🔍" },
+    { name: "OnePlus", models: "OnePlus 5 and newer", icon: "📲" },
+    { name: "Huawei", models: "P20 and newer, Mate series", icon: "📱" },
+    { name: "Other Brands", models: "Sony, LG, Motorola, Nokia, and more", icon: "📱" },
+  ];
 
-  const products = useMemo(
-    () => [
-      { id: 1, model: "iPhone 13", price: 329, grade: "A", storage: "128GB", network: "Unlocked", badge: "New arrival" },
-      { id: 2, model: "Samsung S21", price: 249, grade: "B", storage: "128GB", network: "Unlocked" },
-      { id: 3, model: "iPhone XR", price: 149, grade: "B", storage: "64GB", network: "Unlocked" },
-      { id: 4, model: "Google Pixel 6", price: 219, grade: "A", storage: "128GB", network: "Unlocked" },
-    ],
-    []
-  );
-
-  const filtered = useMemo(() => {
-    const term = q.toLowerCase();
-    let list = products.filter(
-      (p) => p.model.toLowerCase().includes(term) || p.storage.toLowerCase().includes(term)
-    );
-    if (sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
-    if (sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
-    return list;
-  }, [q, sort, products]);
+  const conditions = [
+    { title: "Working", desc: "Fully functional devices in good condition", examples: "Minor scratches, normal wear" },
+    { title: "Cracked Screen", desc: "Display is cracked but phone still works", examples: "Broken glass, LCD damage" },
+    { title: "Faulty Battery", desc: "Battery drains quickly or won't hold charge", examples: "Poor battery health" },
+    { title: "Water Damaged", desc: "Device has been exposed to liquid", examples: "Water, coffee, or other liquids" },
+    { title: "Won't Turn On", desc: "Device powers on but has issues", examples: "Boot loops, frozen screens" },
+    { title: "Completely Dead", desc: "Device doesn't respond at all", examples: "No power, black screen" },
+  ];
 
   return (
     <>
       <Helmet>
-        <title>Products / Stock — FlipMobile</title>
-        <meta name="description" content="Browse refurbished phone stock. Contact us for today’s availability." />
+        <title>What We Buy — PhoneFlip</title>
+        <meta name="description" content="We buy phones in all conditions from all major brands. Apple, Samsung, Google Pixel, and more." />
       </Helmet>
 
       <section className="py-12 md:py-16">
         <Container>
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-            <div>
-              <h1 className="text-3xl font-bold">Products / Stock</h1>
-              <p className="text-gray-700">Stock changes daily — contact us for the latest availability.</p>
-            </div>
-            <div className="flex gap-2">
-              <input
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                placeholder="Search model or storage"
-                className="rounded-xl border p-3 w-56"
-              />
-              <select value={sort} onChange={(e) => setSort(e.target.value)} className="rounded-xl border p-3">
-                <option value="recent">Sort: Recent</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-              </select>
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-3xl md:text-4xl font-bold">What We Buy</h1>
+            <p className="mt-4 text-lg text-gray-700">
+              We purchase phones from all major brands, in any condition. From the latest models 
+              to older devices, working or broken — we'll make you an offer.
+            </p>
+          </div>
+
+          {/* Brands Section */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-center mb-6">Brands We Accept</h2>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {brands.map((brand) => (
+                <div key={brand.name} className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="text-4xl mb-2" aria-hidden>{brand.icon}</div>
+                  <h3 className="font-semibold text-lg">{brand.name}</h3>
+                  <p className="text-sm text-gray-600 mt-1">{brand.models}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {filtered.map((p) => (
-              <article key={p.id} className="rounded-3xl border bg-white p-4 shadow-sm">
-                <div className="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
-                  <span className="text-5xl" aria-hidden>📱</span>
+          {/* Conditions Section */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold text-center mb-6">Conditions We Accept</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {conditions.map((condition) => (
+                <div key={condition.title} className="rounded-2xl border bg-white p-5 shadow-sm">
+                  <h3 className="font-semibold text-lg">{condition.title}</h3>
+                  <p className="text-sm text-gray-700 mt-2">{condition.desc}</p>
+                  <p className="text-xs text-gray-500 mt-1">Examples: {condition.examples}</p>
                 </div>
-                <div className="mt-3 flex items-center justify-between">
+              ))}
+            </div>
+          </div>
+
+          {/* What We Need Section */}
+          <div className="mt-16 rounded-3xl border bg-gradient-to-br from-blue-50 to-gray-50 p-8">
+            <h2 className="text-2xl font-bold text-center mb-4">How to Get a Quote</h2>
+            <div className="max-w-2xl mx-auto">
+              <ol className="space-y-4">
+                <li className="flex gap-3">
+                  <span className="flex-none w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold">1</span>
                   <div>
-                    <h3 className="font-semibold">{p.model}</h3>
-                    <p className="text-sm text-gray-500">{p.network} • Grade {p.grade} • {p.storage}</p>
+                    <h3 className="font-semibold">Tell us about your phone</h3>
+                    <p className="text-sm text-gray-700">Brand, model, storage capacity, and condition</p>
                   </div>
-                  <div className="font-bold">£{p.price}</div>
-                </div>
-                {p.badge && <div className="mt-2 inline-block text-xs bg-gray-900 text-white rounded-full px-2 py-1">{p.badge}</div>}
-              </article>
-            ))}
+                </li>
+                <li className="flex gap-3">
+                  <span className="flex-none w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold">2</span>
+                  <div>
+                    <h3 className="font-semibold">Get an instant quote</h3>
+                    <p className="text-sm text-gray-700">We'll provide a fair offer based on current market value</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="flex-none w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold">3</span>
+                  <div>
+                    <h3 className="font-semibold">Send it in or visit us</h3>
+                    <p className="text-sm text-gray-700">Use our free postage service or come to our shop for same-day payment</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
           </div>
 
-          <div className="mt-10 text-sm text-gray-600">
-            Can’t see your model? <Link to="/quote" className="underline">Request a quote</Link> or message us on{" "}
-            <a className="underline" href="https://wa.me/447000000000" target="_blank" rel="noreferrer">WhatsApp</a>.
+          {/* CTA Section */}
+          <div className="mt-10 text-center">
+            <Link 
+              to="/quote" 
+              className="inline-block rounded-2xl bg-brand text-white px-8 py-4 text-lg shadow-lg hover:bg-brand-dark"
+            >
+              Get Your Quote Now
+            </Link>
+            <p className="mt-4 text-sm text-gray-600">
+              Questions? <a href="/contact" className="underline">Contact us</a> or message us on{" "}
+              <a className="underline" href="https://wa.me/447000000000" target="_blank" rel="noreferrer">WhatsApp</a>.
+            </p>
           </div>
         </Container>
       </section>

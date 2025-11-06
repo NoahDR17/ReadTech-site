@@ -3,8 +3,8 @@ import Container from "./Container.jsx";
 
 const links = [
   { to: "/", label: "Home", end: true },
-  { to: "/products", label: "Products" },
-  { to: "/quote", label: "Get a quote" },
+  { to: "/products", label: "What We Buy" },
+  { to: "/quote", label: "Sell Your Phone" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ];
@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
       <Container className="py-3 flex items-center justify-between">
-        <Link to="/" className="font-bold text-xl tracking-tight">ReadTech</Link>
+        <Link to="/" className="font-bold text-xl tracking-tight">PhoneFlip</Link>
         <nav className="hidden md:flex gap-6 text-sm">
           {links.map(({ to, label, end }) => (
             <NavLink
