@@ -16,7 +16,7 @@ export default function Quote() {
     setForm((f) => ({ ...f, [name]: value }));
   }
   function validate() {
-    if (!form.name || !form.phone || !form.deviceModel) return "Please fill the required fields.";
+    if (!form.name || !form.phone || !form.deviceModel || !form.condition) return "Please fill the required fields.";
     if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return "Enter a valid email.";
     return "";
   }
