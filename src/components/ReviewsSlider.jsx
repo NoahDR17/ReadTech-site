@@ -88,7 +88,7 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec }) {
   };
 
   return (
-    <section id="reviews" className="py-16 md:py-20 bg-white" aria-label="Customer Reviews">
+    <section id="reviews" className="py-16 md:py-20 bg-white border-t border-gray-200" aria-label="Customer Reviews">
       {/* keyframes for marquee (scoped) */}
       <style>{`
         @keyframes marquee-x {
@@ -101,7 +101,7 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec }) {
         {/* Header */}
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">What customers say</h2>
-          <p className="text-gray-700 mt-2">Real reviews from people who sold their phones to us.</p>
+          <p className="text-gray-600 mt-2">Real reviews from people who sold their phones to us.</p>
         </div>
 
         {/* Mobile: Manual swipe slider */}
@@ -109,7 +109,7 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec }) {
           <div className="relative mt-8">
             <div 
               ref={containerRef}
-              className="overflow-hidden rounded-3xl border bg-gray-50"
+              className="overflow-hidden rounded-3xl border border-gray-200 bg-gray-50"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
@@ -129,12 +129,12 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec }) {
                     aria-label={`Review by ${r.name}`}
                   >
                     <div className="h-full p-4">
-                      <div className="rounded-2xl bg-white h-full p-6 shadow-sm border">
+                      <div className="rounded-2xl bg-white h-full p-6 shadow-sm border border-gray-200">
                         <div className="flex items-center justify-between">
                           <Stars count={r.rating} />
                           <span className="text-xs text-gray-500">{r.date}</span>
                         </div>
-                        <p className="mt-4 text-gray-700 leading-relaxed">&ldquo;{r.text}&rdquo;</p>
+                        <p className="mt-4 text-gray-600 leading-relaxed">&ldquo;{r.text}&rdquo;</p>
                         <div className="mt-6 flex items-center justify-between text-sm">
                           <div className="font-semibold">{r.name}</div>
                           <div className="text-gray-500">{r.source}</div>
@@ -164,7 +164,7 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec }) {
           </div>
         ) : (
           /* Desktop: Automatic marquee */
-          <div className="relative mt-8 overflow-hidden rounded-3xl border bg-gray-50">
+          <div className="relative mt-8 overflow-hidden rounded-3xl border border-gray-200 bg-gray-50">
             {/* soft gradient edges */}
             <div className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-gray-50 to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-gray-50 to-transparent" />
@@ -186,12 +186,12 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec }) {
                   aria-label={`Review by ${r.name}`}
                 >
                   <div className="h-full p-4 sm:p-6">
-                    <div className="rounded-2xl bg-white h-full p-6 shadow-sm border">
+                    <div className="rounded-2xl bg-white h-full p-6 shadow-sm border border-gray-200">
                       <div className="flex items-center justify-between">
                         <Stars count={r.rating} />
                         <span className="text-xs text-gray-500">{r.date}</span>
                       </div>
-                      <p className="mt-4 text-gray-700 leading-relaxed">&ldquo;{r.text}&rdquo;</p>
+                      <p className="mt-4 text-gray-600 leading-relaxed">&ldquo;{r.text}&rdquo;</p>
                       <div className="mt-6 flex items-center justify-between text-sm">
                         <div className="font-semibold">{r.name}</div>
                         <div className="text-gray-500">{r.source}</div>

@@ -10,7 +10,7 @@ import NotFound from "./pages/NotFound.jsx";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
+    <div className="min-h-screen bg-white text-gray-900">
       <Navbar />
       <main>
         <Routes>

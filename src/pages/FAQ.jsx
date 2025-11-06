@@ -5,12 +5,12 @@ import Container from "../components/Container.jsx";
 function Item({ q, a }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b">
-      <button onClick={() => setOpen((o) => !o)} className="w-full flex items-center justify-between px-4 py-4 text-left">
+    <div className="border-b border-gray-200">
+      <button onClick={() => setOpen((o) => !o)} className="w-full flex items-center justify-between px-4 py-4 text-left hover:bg-gray-50 transition-colors">
         <span className="font-medium">{q}</span>
         <span aria-hidden>{open ? "–" : "+"}</span>
       </button>
-      {open && <div className="px-4 pb-4 text-gray-700">{a}</div>}
+      {open && <div className="px-4 pb-4 text-gray-600">{a}</div>}
     </div>
   );
 }
@@ -74,12 +74,12 @@ export default function FAQ() {
         <meta name="description" content="Common questions about selling your phone, accepted conditions, payment, data privacy, and our buying process." />
       </Helmet>
 
-      <section className="py-12 md:py-16">
-        <Container className="max-w-3xl bg-white border rounded-2xl">
+      <section className="py-12 md:py-16 bg-gray-50">
+        <Container className="max-w-3xl bg-white border border-gray-200 rounded-2xl shadow-sm">
           <h1 className="text-3xl font-bold p-4 pb-0">Frequently Asked Questions</h1>
           <p className="px-4 pt-2 text-gray-600">Everything you need to know about selling your phone to us</p>
           <div className="mt-4">{faqs.map((f, i) => <Item key={i} {...f} />)}</div>
-          <p className="p-4 text-sm text-gray-600">Still have questions? <a className="underline" href="/contact">Contact us</a> or message us on <a className="underline" href="https://wa.me/447000000000" target="_blank" rel="noreferrer">WhatsApp</a>.</p>
+          <p className="p-4 text-sm text-gray-600">Still have questions? <a className="underline hover:text-brand transition-colors" href="/contact">Contact us</a> or message us on <a className="underline hover:text-brand transition-colors" href="https://wa.me/447000000000" target="_blank" rel="noreferrer">WhatsApp</a>.</p>
         </Container>
       </section>
     </>

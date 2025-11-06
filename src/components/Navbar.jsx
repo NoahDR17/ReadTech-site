@@ -22,7 +22,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200">
       <Container className="py-3 flex items-center justify-between">
         <Link to="/" className="font-bold text-xl tracking-tight">PhoneFlip</Link>
         
@@ -34,7 +34,7 @@ export default function Navbar() {
               to={to}
               end={end}
               className={({ isActive }) =>
-                `hover:text-black ${isActive ? "text-black font-semibold" : "text-gray-700"}`
+                `hover:text-brand transition-colors ${isActive ? "text-brand font-semibold" : "text-gray-600"}`
               }
             >
               {label}
@@ -45,7 +45,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMobileMenu}
-          className="md:hidden p-2 text-gray-700 hover:text-black focus:outline-none"
+          className="md:hidden p-2 text-gray-600 hover:text-brand focus:outline-none transition-colors"
           aria-label="Toggle menu"
         >
           <svg
@@ -76,7 +76,7 @@ export default function Navbar() {
           href="https://wa.me/447000000000"
           target="_blank"
           rel="noreferrer"
-          className="hidden md:inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-sm bg-brand text-white shadow hover:bg-brand-dark"
+          className="hidden md:inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-sm bg-brand text-white shadow-sm hover:bg-brand-dark transition-all"
         >
           WhatsApp
         </a>
@@ -84,7 +84,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t">
+        <div className="md:hidden bg-white border-t border-gray-200">
           <Container className="py-4">
             <nav className="flex flex-col gap-4">
               {links.map(({ to, label, end }) => (
@@ -94,7 +94,7 @@ export default function Navbar() {
                   end={end}
                   onClick={closeMobileMenu}
                   className={({ isActive }) =>
-                    `hover:text-black py-2 ${isActive ? "text-black font-semibold" : "text-gray-700"}`
+                    `hover:text-brand transition-colors py-2 ${isActive ? "text-brand font-semibold" : "text-gray-600"}`
                   }
                 >
                   {label}
@@ -104,7 +104,7 @@ export default function Navbar() {
                 href="https://wa.me/447000000000"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-sm bg-brand text-white shadow hover:bg-brand-dark"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-sm bg-brand text-white shadow-sm hover:bg-brand-dark transition-all"
               >
                 WhatsApp
               </a>

@@ -43,10 +43,10 @@ export default function Quote() {
         <meta name="description" content="Get an instant quote for your old or broken phone. We buy all brands and conditions." />
       </Helmet>
 
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16 bg-gray-50">
         <Container className="max-w-3xl">
           <h1 className="text-3xl font-bold">Sell Your Phone</h1>
-          <p className="mt-2 text-gray-700">Tell us about your device and we'll provide you with an instant quote.</p>
+          <p className="mt-2 text-gray-600">Tell us about your device and we'll provide you with an instant quote.</p>
 
           <form onSubmit={handleSubmit} className="mt-8 grid md:grid-cols-2 gap-4">
             {[
@@ -61,21 +61,21 @@ export default function Quote() {
                   onChange={updateField}
                   required={f.required}
                   placeholder={f.placeholder || ""}
-                  className="rounded-xl border p-3"
+                  className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
                 />
               </div>
             ))}
             <div className="grid gap-1 md:col-span-2">
               <label className="text-sm">Email</label>
-              <input type="email" name="email" value={form.email} onChange={updateField} className="rounded-xl border p-3" placeholder="you@example.com" />
+              <input type="email" name="email" value={form.email} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="you@example.com" />
             </div>
             <div className="grid gap-1 md:col-span-2">
               <label className="text-sm">Device model *</label>
-              <input name="deviceModel" value={form.deviceModel} onChange={updateField} className="rounded-xl border p-3" placeholder="e.g., iPhone 13, Samsung Galaxy S21, Google Pixel 6" required />
+              <input name="deviceModel" value={form.deviceModel} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="e.g., iPhone 13, Samsung Galaxy S21, Google Pixel 6" required />
             </div>
             <div className="grid gap-1">
               <label className="text-sm">Storage</label>
-              <select name="storage" value={form.storage} onChange={updateField} className="rounded-xl border p-3">
+              <select name="storage" value={form.storage} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all">
                 <option value="">Select storage</option>
                 <option value="64GB">64GB</option>
                 <option value="128GB">128GB</option>
@@ -87,7 +87,7 @@ export default function Quote() {
             </div>
             <div className="grid gap-1">
               <label className="text-sm">Condition *</label>
-              <select name="condition" value={form.condition} onChange={updateField} className="rounded-xl border p-3" required>
+              <select name="condition" value={form.condition} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" required>
                 <option value="">Select condition</option>
                 <option value="working">Working - No issues</option>
                 <option value="minor-damage">Minor damage - Scratches/dents</option>
@@ -100,26 +100,26 @@ export default function Quote() {
             </div>
             <div className="grid gap-1 md:col-span-2">
               <label className="text-sm">IMEI (optional but helps us give accurate quotes)</label>
-              <input name="imei" value={form.imei} onChange={updateField} className="rounded-xl border p-3" placeholder="15-digit IMEI number (dial *#06# to find it)" />
+              <input name="imei" value={form.imei} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="15-digit IMEI number (dial *#06# to find it)" />
               <p className="text-xs text-gray-500">Dial *#06# on your phone to find your IMEI number</p>
             </div>
             <div className="grid gap-1 md:col-span-2">
               <label className="text-sm">Additional details / Issues</label>
-              <textarea name="issue" value={form.issue} onChange={updateField} className="rounded-xl border p-3" rows={4} placeholder="Please describe any issues with your phone: screen damage, battery problems, physical damage, etc." />
+              <textarea name="issue" value={form.issue} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" rows={4} placeholder="Please describe any issues with your phone: screen damage, battery problems, physical damage, etc." />
             </div>
             <div className="md:col-span-2 flex items-center gap-4">
-              <button type="submit" disabled={submitting} className="rounded-2xl bg-brand text-white px-6 py-3 shadow hover:bg-brand-dark">
+              <button type="submit" disabled={submitting} className="rounded-2xl bg-brand text-white px-6 py-3 shadow-sm hover:bg-brand-dark disabled:opacity-50 transition-all">
                 {submitting ? "Sending…" : "Get my quote"}
               </button>
-              <a href="https://wa.me/447000000000" target="_blank" rel="noreferrer" className="text-sm underline">Or message us on WhatsApp</a>
+              <a href="https://wa.me/447000000000" target="_blank" rel="noreferrer" className="text-sm underline hover:text-brand transition-colors">Or message us on WhatsApp</a>
             </div>
-            {message && <div className="md:col-span-2 text-sm text-gray-700">{message}</div>}
+            {message && <div className="md:col-span-2 text-sm text-gray-600">{message}</div>}
           </form>
 
           {/* Privacy note */}
-          <div className="mt-8 rounded-2xl border bg-gray-50 p-6">
+          <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6">
             <h3 className="font-semibold mb-2">📋 What happens next?</h3>
-            <ul className="text-sm text-gray-700 space-y-2">
+            <ul className="text-sm text-gray-600 space-y-2">
               <li>• We'll review your device details and send you a quote within 24 hours</li>
               <li>• If you accept, we'll provide free postage labels or you can visit us in-store</li>
               <li>• Once we verify your device, you'll receive payment the same day</li>
