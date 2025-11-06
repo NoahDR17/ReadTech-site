@@ -23,19 +23,19 @@ export default function Home() {
               <br />
               Get Cash Fast
             </h1>
-            <p className="mt-4 text-lg text-gray-700">
+            <p className="mt-4 text-lg text-gray-600">
               We buy phones in any condition — cracked screens, faulty batteries, water damage, or simply unwanted upgrades.
             </p>
             <div className="mt-6 flex gap-3">
               <Link
                 to="/quote"
-                className="rounded-2xl px-5 py-3 bg-black text-white shadow"
+                className="rounded-2xl px-5 py-3 bg-brand text-white shadow-sm hover:bg-brand-dark transition-all"
               >
                 Sell your phone
               </Link>
               <Link
                 to="/products"
-                className="rounded-2xl px-5 py-3 bg-white border shadow"
+                className="rounded-2xl px-5 py-3 bg-white border border-gray-300 shadow-sm hover:border-brand hover:text-brand transition-all"
               >
                 What we buy
               </Link>
@@ -44,7 +44,7 @@ export default function Home() {
               Instant quotes • Same-day payment • All major brands accepted
             </p>
           </div>
-          <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-gray-200 to-gray-100 shadow-inner flex items-center justify-center">
+          <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-gray-100 to-gray-50 shadow-sm flex items-center justify-center border border-gray-200">
             <div className="text-7xl" aria-hidden>
               📱
             </div>
@@ -53,17 +53,17 @@ export default function Home() {
       </section>
 
 {/* About Us Section */}
-<section id="about" className="py-20 bg-white border-t">
+<section id="about" className="py-20 bg-gray-50 border-t border-gray-200">
   <Container>
     {/* Section header */}
     <div className="max-w-3xl mx-auto text-center">
-      <span className="inline-block text-xs tracking-widest uppercase text-gray-500">
+      <span className="inline-block text-xs tracking-widest uppercase text-accent">
         How It Works
       </span>
       <h2 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">
         Turn Your Old Phone Into Cash in 3 Easy Steps
       </h2>
-      <p className="mt-4 text-lg text-gray-700">
+      <p className="mt-4 text-lg text-gray-600">
         At <span className="font-semibold">PhoneFlip</span>, we make selling your phone
         quick, secure, and transparent. Whether it's cracked, broken, or just outdated —
         we'll give you a fair price.
@@ -82,7 +82,7 @@ export default function Home() {
             { icon: "🔒", title: "Data wiped safely", desc: "We securely erase all your personal data." },
             { icon: "📦", title: "Free postage", desc: "Use our insured mail-in service across the UK." },
           ].map((item) => (
-            <li key={item.title} className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition-shadow">
+            <li key={item.title} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-brand transition-all">
               <div className="text-2xl" aria-hidden>{item.icon}</div>
               <h3 className="mt-2 font-semibold">{item.title}</h3>
               <p className="mt-1 text-sm text-gray-600">{item.desc}</p>
@@ -91,7 +91,7 @@ export default function Home() {
         </ul>
 
         {/* Body copy */}
-        <div className="mt-6 text-gray-700 leading-relaxed">
+        <div className="mt-6 text-gray-600 leading-relaxed">
           <p>
             We buy all major phone brands including Apple, Samsung, Google Pixel, OnePlus, and more.
             From cracked screens to faulty batteries, water damage to phones that won't turn on —
@@ -107,7 +107,7 @@ export default function Home() {
             { k: "Same day", v: "Payment time" },
             { k: "4.9★",   v: "Customer rating" },
           ].map((s) => (
-            <div key={s.v} className="rounded-2xl border p-5 bg-white text-center shadow-sm">
+            <div key={s.v} className="rounded-2xl border border-gray-200 p-5 bg-white text-center shadow-sm hover:border-brand transition-all">
               <div className="text-2xl font-extrabold">{s.k}</div>
               <div className="text-xs text-gray-600 mt-1">{s.v}</div>
             </div>
@@ -116,10 +116,10 @@ export default function Home() {
 
         {/* CTA */}
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
-          <Link to="/quote" className="rounded-2xl bg-brand text-white px-6 py-3 shadow hover:bg-brand-dark text-center">
+          <Link to="/quote" className="rounded-2xl bg-brand text-white px-6 py-3 shadow-sm hover:bg-brand-dark text-center transition-all">
             Get instant quote
           </Link>
-          <Link to="/products" className="rounded-2xl border px-6 py-3 shadow text-center">
+          <Link to="/products" className="rounded-2xl border border-gray-300 px-6 py-3 shadow-sm text-center hover:border-brand hover:text-brand transition-all">
             See what we buy
           </Link>
         </div>
@@ -127,8 +127,8 @@ export default function Home() {
 
       {/* Right: visual card with badges */}
       <div className="md:col-span-5">
-        <div className="relative rounded-3xl border bg-white p-5 shadow-lg">
-          <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-gray-200 to-gray-100 flex items-center justify-center">
+        <div className="relative rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
+          <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center border border-gray-200">
             <span className="text-7xl" aria-hidden>📱</span>
           </div>
 
@@ -155,7 +155,7 @@ export default function Home() {
         </div>
 
         {/* “As seen on / payment” strip (optional) */}
-        <div className="mt-6 rounded-2xl border bg-gray-50 p-4 text-center text-xs text-gray-600">
+        <div className="mt-6 rounded-2xl border border-gray-200 bg-gray-50 p-4 text-center text-xs text-gray-600">
           We pay via bank transfer • Cash in-store • Apple Pay • Google Pay
         </div>
       </div>

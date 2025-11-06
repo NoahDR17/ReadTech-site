@@ -8,9 +8,14 @@ export default {
       },
       colors: {
         brand: {
-          DEFAULT: "#0EA5E9", // pick your accent
-          dark: "#0284C7",
-          light: "#7DD3FC",
+          DEFAULT: "#1e3a5f", // Deep navy - professional and trustworthy
+          dark: "#15294a",    // Darker navy for hover states
+          light: "#2d5a8f",   // Lighter navy for accents
+        },
+        accent: {
+          DEFAULT: "#475569", // Slate gray - sophisticated secondary
+          light: "#64748b",   // Light slate
+          lighter: "#94a3b8", // Even lighter slate for subtle elements
         },
       },
       boxShadow: {
