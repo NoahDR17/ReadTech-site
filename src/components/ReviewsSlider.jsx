@@ -19,17 +19,29 @@ function Stars({ count = 5 }) {
 
 /**
  * Continuous, seamless marquee slider.
- * - speedSec: total time for one loop (bigger = slower)
- * - pauses on hover
- * - respects prefers-reduced-motion
+ * - speed is now based on screen size (faster on mobile)
+ * - no pausing on hover
+ * - improved sizing for each review card
  */
-export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec = 30 }) {
+export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec }) {
   const items = useMemo(() => (reviews && reviews.length ? reviews : DEFAULT_REVIEWS), [reviews]);
   const doubled = useMemo(() => [...items, ...items], [items]);
-  const [paused, setPaused] = useState(false);
+  const [reduced, setReduced] = useState(false);
+
+  // Dynamically set speed based on screen size
+  const [slideSpeed, setSlideSpeed] = useState(speedSec || 30);
+  useEffect(() => {
+    function updateSpeed() {
+      if (window.innerWidth < 640) setSlideSpeed(12);
+      else if (window.innerWidth < 1024) setSlideSpeed(20);
+      else setSlideSpeed(speedSec || 30);
+    }
+    updateSpeed();
+    window.addEventListener("resize", updateSpeed);
+    return () => window.removeEventListener("resize", updateSpeed);
+  }, [speedSec]);
 
   // reduced motion?
-  const [reduced, setReduced] = useState(false);
   useEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia) return;
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -43,7 +55,7 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec = 30
 
   return (
     <section id="reviews" className="py-16 md:py-20 bg-white" aria-label="Customer Reviews">
-      {/* keyframes for the marquee (scoped) */}
+      {/* keyframes for marquee (scoped) */}
       <style>{`
         @keyframes marquee-x {
           0%   { transform: translateX(0); }
@@ -59,23 +71,18 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec = 30
         </div>
 
         {/* Marquee viewport */}
-        <div
-          className="relative mt-8 overflow-hidden rounded-3xl border bg-gray-50"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
+        <div className="relative mt-8 overflow-hidden rounded-3xl border bg-gray-50">
           {/* soft gradient edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-gray-50 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-gray-50 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-gray-50 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-gray-50 to-transparent" />
 
           {/* Track (2x length for seamless loop) */}
           <div
             className="flex gap-4 will-change-transform"
             style={{
               animation: reduced ? "none" : `marquee-x var(--d) linear infinite`,
-              animationPlayState: paused ? "paused" : "running",
-              // loop duration
-              ["--d"]: `${speedSec}s`,
+              // no pausing, always running
+              ["--d"]: `${slideSpeed}s`,
             }}
             role="list"
           >
@@ -83,11 +90,11 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec = 30
               <article
                 key={`${r.id}-${idx}`}
                 role="listitem"
-                className="w-80 sm:w-96 lg:w-[28rem] flex-none"
+                className="w-full sm:w-80 md:w-96 lg:w-[28rem] flex-none"
                 aria-label={`Review by ${r.name}`}
               >
                 <div className="h-full p-4 sm:p-6">
-                  <div className="rounded-3xl bg-white h-full p-6 shadow-sm border">
+                  <div className="rounded-2xl bg-white h-full p-6 shadow-sm border">
                     <div className="flex items-center justify-between">
                       <Stars count={r.rating} />
                       <span className="text-xs text-gray-500">{r.date}</span>
@@ -104,7 +111,7 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec = 30
           </div>
         </div>
 
-        {/* Sub-copy / trust line (optional) */}
+        {/* Sub-copy / trust line */}
         <p className="mt-6 text-center text-sm text-gray-600">
           Verified by Google — ask in store to see our latest ratings.
         </p>
