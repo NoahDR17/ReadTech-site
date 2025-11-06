@@ -8,6 +8,8 @@ const DEFAULT_REVIEWS = [
   { id: 5, name: "Dan K.", rating: 5, text: "Sold three old phones to them. Honest pricing and they kept me updated throughout.", source: "Google Reviews", date: "Jun 2025" },
 ];
 
+const SWIPE_THRESHOLD = 50;
+
 function Stars({ count = 5 }) {
   return (
     <div className="text-yellow-500" aria-hidden>
@@ -62,18 +64,20 @@ export default function ReviewsSlider({ reviews = DEFAULT_REVIEWS, speedSec }) {
 
   // Handle touch events for mobile swipe
   const handleTouchStart = (e) => {
+    if (!e.touches || e.touches.length === 0) return;
     touchStartX.current = e.touches[0].clientX;
   };
 
   const handleTouchMove = (e) => {
+    if (!e.touches || e.touches.length === 0) return;
     touchEndX.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX.current - touchEndX.current > 50) {
+    if (touchStartX.current - touchEndX.current > SWIPE_THRESHOLD) {
       // Swipe left - next
       setCurrentIndex((prev) => (prev + 1) % items.length);
-    } else if (touchEndX.current - touchStartX.current > 50) {
+    } else if (touchEndX.current - touchStartX.current > SWIPE_THRESHOLD) {
       // Swipe right - previous
       setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
     }
