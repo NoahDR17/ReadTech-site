@@ -1,5 +1,6 @@
 {
   "name": "phoneflip-site",
+  "description": "PhoneFlip - We buy old and broken mobile phones",
   "private": true,
   "version": "0.0.0",
   "type": "module",

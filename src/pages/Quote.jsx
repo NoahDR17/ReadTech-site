@@ -6,7 +6,7 @@ export default function Quote() {
   const [form, setForm] = useState({
     name: "", phone: "", email: "",
     deviceModel: "", storage: "", condition: "",
-    imei: "", issue: "", service: "sell",
+    imei: "", issue: "",
   });
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState("");
@@ -16,7 +16,7 @@ export default function Quote() {
     setForm((f) => ({ ...f, [name]: value }));
   }
   function validate() {
-    if (!form.name || !form.phone || !form.deviceModel || !form.service) return "Please fill the required fields.";
+    if (!form.name || !form.phone || !form.deviceModel || !form.condition) return "Please fill the required fields.";
     if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return "Enter a valid email.";
     return "";
   }
@@ -27,8 +27,8 @@ export default function Quote() {
     try {
       setSubmitting(true); setMessage("");
       await new Promise((r) => setTimeout(r, 800)); // replace with real endpoint
-      setMessage("Thanks! We'll get back to you shortly with a quote.");
-      setForm({ name: "", phone: "", email: "", deviceModel: "", storage: "", condition: "", imei: "", issue: "", service: "sell" });
+      setMessage("Thanks! We'll get back to you shortly with a quote for your device.");
+      setForm({ name: "", phone: "", email: "", deviceModel: "", storage: "", condition: "", imei: "", issue: "" });
     } catch {
       setMessage("Something went wrong. Please try again or WhatsApp us.");
     } finally {
@@ -39,14 +39,14 @@ export default function Quote() {
   return (
     <>
       <Helmet>
-        <title>Get a quote — FlipMobile</title>
-        <meta name="description" content="Request a price for selling your phone or a repair estimate." />
+        <title>Sell Your Phone — PhoneFlip</title>
+        <meta name="description" content="Get an instant quote for your old or broken phone. We buy all brands and conditions." />
       </Helmet>
 
       <section className="py-12 md:py-16 bg-white">
         <Container className="max-w-3xl">
-          <h1 className="text-3xl font-bold">Get a quick quote</h1>
-          <p className="mt-2 text-gray-700">Tell us about your device. We’ll reply with a price estimate or repair cost.</p>
+          <h1 className="text-3xl font-bold">Sell Your Phone</h1>
+          <p className="mt-2 text-gray-700">Tell us about your device and we'll provide you with an instant quote.</p>
 
           <form onSubmit={handleSubmit} className="mt-8 grid md:grid-cols-2 gap-4">
             {[
@@ -65,52 +65,67 @@ export default function Quote() {
                 />
               </div>
             ))}
-            <div className="grid gap-1">
+            <div className="grid gap-1 md:col-span-2">
               <label className="text-sm">Email</label>
               <input type="email" name="email" value={form.email} onChange={updateField} className="rounded-xl border p-3" placeholder="you@example.com" />
             </div>
-            <div className="grid gap-1">
-              <label className="text-sm">Service *</label>
-              <select name="service" value={form.service} onChange={updateField} className="rounded-xl border p-3">
-                <option value="sell">Sell my phone</option>
-                <option value="buy">Buy a phone</option>
-                <option value="repair">Repair my phone</option>
-              </select>
-            </div>
             <div className="grid gap-1 md:col-span-2">
               <label className="text-sm">Device model *</label>
-              <input name="deviceModel" value={form.deviceModel} onChange={updateField} className="rounded-xl border p-3" placeholder="e.g., iPhone 13, Samsung S21" required />
+              <input name="deviceModel" value={form.deviceModel} onChange={updateField} className="rounded-xl border p-3" placeholder="e.g., iPhone 13, Samsung Galaxy S21, Google Pixel 6" required />
             </div>
             <div className="grid gap-1">
               <label className="text-sm">Storage</label>
-              <input name="storage" value={form.storage} onChange={updateField} className="rounded-xl border p-3" placeholder="e.g., 128GB" />
+              <select name="storage" value={form.storage} onChange={updateField} className="rounded-xl border p-3">
+                <option value="">Select storage</option>
+                <option value="64GB">64GB</option>
+                <option value="128GB">128GB</option>
+                <option value="256GB">256GB</option>
+                <option value="512GB">512GB</option>
+                <option value="1TB">1TB</option>
+                <option value="other">Other / Don't know</option>
+              </select>
             </div>
             <div className="grid gap-1">
-              <label className="text-sm">Condition</label>
-              <select name="condition" value={form.condition} onChange={updateField} className="rounded-xl border p-3">
+              <label className="text-sm">Condition *</label>
+              <select name="condition" value={form.condition} onChange={updateField} className="rounded-xl border p-3" required>
                 <option value="">Select condition</option>
-                <option value="like-new">Like New</option>
-                <option value="good">Good</option>
-                <option value="fair">Fair</option>
-                <option value="faulty">Faulty</option>
+                <option value="working">Working - No issues</option>
+                <option value="minor-damage">Minor damage - Scratches/dents</option>
+                <option value="cracked-screen">Cracked screen</option>
+                <option value="faulty-battery">Faulty battery</option>
+                <option value="water-damage">Water damage</option>
+                <option value="wont-turn-on">Won't turn on</option>
+                <option value="other-issues">Other issues</option>
               </select>
             </div>
             <div className="grid gap-1 md:col-span-2">
-              <label className="text-sm">IMEI (optional)</label>
-              <input name="imei" value={form.imei} onChange={updateField} className="rounded-xl border p-3" placeholder="15-digit IMEI for accurate quote" />
+              <label className="text-sm">IMEI (optional but helps us give accurate quotes)</label>
+              <input name="imei" value={form.imei} onChange={updateField} className="rounded-xl border p-3" placeholder="15-digit IMEI number (dial *#06# to find it)" />
+              <p className="text-xs text-gray-500">Dial *#06# on your phone to find your IMEI number</p>
             </div>
             <div className="grid gap-1 md:col-span-2">
-              <label className="text-sm">Issue / Notes</label>
-              <textarea name="issue" value={form.issue} onChange={updateField} className="rounded-xl border p-3" rows={4} placeholder="Cracked screen, weak battery, network unlock, etc." />
+              <label className="text-sm">Additional details / Issues</label>
+              <textarea name="issue" value={form.issue} onChange={updateField} className="rounded-xl border p-3" rows={4} placeholder="Please describe any issues with your phone: screen damage, battery problems, physical damage, etc." />
             </div>
             <div className="md:col-span-2 flex items-center gap-4">
               <button type="submit" disabled={submitting} className="rounded-2xl bg-brand text-white px-6 py-3 shadow hover:bg-brand-dark">
-                {submitting ? "Sending…" : "Request quote"}
+                {submitting ? "Sending…" : "Get my quote"}
               </button>
               <a href="https://wa.me/447000000000" target="_blank" rel="noreferrer" className="text-sm underline">Or message us on WhatsApp</a>
             </div>
             {message && <div className="md:col-span-2 text-sm text-gray-700">{message}</div>}
           </form>
+
+          {/* Privacy note */}
+          <div className="mt-8 rounded-2xl border bg-gray-50 p-6">
+            <h3 className="font-semibold mb-2">📋 What happens next?</h3>
+            <ul className="text-sm text-gray-700 space-y-2">
+              <li>• We'll review your device details and send you a quote within 24 hours</li>
+              <li>• If you accept, we'll provide free postage labels or you can visit us in-store</li>
+              <li>• Once we verify your device, you'll receive payment the same day</li>
+              <li>• We securely wipe all data from your phone</li>
+            </ul>
+          </div>
         </Container>
       </section>
     </>
