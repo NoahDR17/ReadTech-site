@@ -19,7 +19,7 @@ export default function FAQ() {
   const faqs = [
     { 
       q: "What types of phones do you buy?", 
-      a: "We buy all major brands including Apple (iPhone), Samsung, Google Pixel, OnePlus, Huawei, and more. We accept phones from recent models to older devices, in any condition." 
+      a: "We buy phones from Google (Pixel), Samsung (Galaxy), and Apple (iPhone). We accept phones from recent models to older devices, in any condition." 
     },
     { 
       q: "What conditions do you accept?", 
