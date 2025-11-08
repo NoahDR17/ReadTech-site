@@ -39,7 +39,7 @@ export default function Quote() {
   return (
     <>
       <Helmet>
-        <title>Sell Your Phone — PhoneFlip</title>
+        <title>Sell Your Phone — Readtech</title>
         <meta name="description" content="Get an instant quote for your old or broken phone. We buy all brands and conditions." />
       </Helmet>
 
