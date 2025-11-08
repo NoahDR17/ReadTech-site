@@ -3,8 +3,8 @@ import Container from "../components/Container.jsx";
 
 export default function Contact() {
   const biz = {
-    phone: "07000 000000",
-    email: "hello@example.com",
+    phone: "07716692778",
+    email: "rylieread4006@gmail.com",
   };
 
   return (
@@ -46,7 +46,7 @@ export default function Contact() {
                 Email
               </a>
               <a
-                href="https://wa.me/447000000000"
+                href="https://wa.me/447716692778"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-2xl px-4 py-2 border border-gray-300 shadow-sm hover:bg-gray-50 hover:border-brand transition-all"
