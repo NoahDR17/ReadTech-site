@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 
 export default function Products() {
   const brands = [
-    { name: "Apple", models: "iPhone 8 and newer", icon: "🍎" },
     { name: "Samsung", models: "Galaxy S8 and newer, Note series", icon: "📱" },
     { name: "Google", models: "Pixel 2 and newer", icon: "🔍" },
-    { name: "OnePlus", models: "OnePlus 5 and newer", icon: "📲" },
-    { name: "Huawei", models: "P20 and newer, Mate series", icon: "📱" },
-    { name: "Other Brands", models: "Sony, LG, Motorola, Nokia, and more", icon: "📱" },
   ];
 
   const conditions = [
@@ -25,7 +21,7 @@ export default function Products() {
     <>
       <Helmet>
         <title>What We Buy — Readtech</title>
-        <meta name="description" content="We buy phones in all conditions from all major brands. Apple, Samsung, Google Pixel, and more." />
+        <meta name="description" content="We buy Samsung and Google Pixel phones in all conditions." />
       </Helmet>
 
       <section className="py-12 md:py-16 bg-gray-50">
@@ -33,7 +29,7 @@ export default function Products() {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-3xl md:text-4xl font-bold">What We Buy</h1>
             <p className="mt-4 text-lg text-gray-600">
-              We purchase phones from all major brands, in any condition. From the latest models 
+              We purchase Samsung and Google phones, in any condition. From the latest models 
               to older devices, working or broken — we'll make you an offer.
             </p>
           </div>

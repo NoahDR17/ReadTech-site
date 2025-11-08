@@ -40,7 +40,7 @@ export default function Quote() {
     <>
       <Helmet>
         <title>Sell Your Phone — Readtech</title>
-        <meta name="description" content="Get an instant quote for your old or broken phone. We buy all brands and conditions." />
+        <meta name="description" content="Get an instant quote for your old or broken Samsung or Google phone. We buy all conditions." />
       </Helmet>
 
       <section className="py-12 md:py-16 bg-gray-50">
@@ -71,7 +71,7 @@ export default function Quote() {
             </div>
             <div className="grid gap-1 md:col-span-2">
               <label className="text-sm">Device model *</label>
-              <input name="deviceModel" value={form.deviceModel} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="e.g., iPhone 13, Samsung Galaxy S21, Google Pixel 6" required />
+              <input name="deviceModel" value={form.deviceModel} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="e.g., Samsung Galaxy S21, Google Pixel 6" required />
             </div>
             <div className="grid gap-1">
               <label className="text-sm">Storage</label>

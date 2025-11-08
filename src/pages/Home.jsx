@@ -10,7 +10,7 @@ export default function Home() {
         <title>Readtech — We Buy Old &amp; Broken Phones</title>
         <meta
           name="description"
-          content="Sell your old, broken, or unwanted phone for cash. We buy all brands and conditions including cracked screens, faulty batteries, and water damage."
+          content="Sell your old, broken, or unwanted Samsung or Google phone for cash. We buy all conditions including cracked screens, faulty batteries, and water damage."
         />
       </Helmet>
 
@@ -41,7 +41,7 @@ export default function Home() {
               </Link>
             </div>
             <p className="mt-4 text-xs text-gray-500">
-              Instant quotes • Same-day payment • All major brands accepted
+              Instant quotes • Same-day payment • Samsung & Google accepted
             </p>
           </div>
           <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-gray-100 to-gray-50 shadow-sm flex items-center justify-center border border-gray-200">
@@ -93,7 +93,7 @@ export default function Home() {
         {/* Body copy */}
         <div className="mt-6 text-gray-600 leading-relaxed">
           <p>
-            We buy all major phone brands including Apple, Samsung, Google Pixel, OnePlus, and more.
+            We buy Samsung and Google Pixel phones.
             From cracked screens to faulty batteries, water damage to phones that won't turn on —
             we accept devices in all conditions. Get an instant quote online or visit us in-store
             to sell your phone today.
@@ -136,7 +136,7 @@ export default function Home() {
           <div className="mt-4 grid gap-2">
             <div className="flex items-center gap-2 text-sm">
               <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand text-white">✓</span>
-              <span>All brands accepted</span>
+              <span>Samsung & Google accepted</span>
             </div>
             <div className="flex items-center gap-2 text-sm">
               <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand text-white">✓</span>

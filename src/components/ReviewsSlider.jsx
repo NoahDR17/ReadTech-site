@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect, useRef } from "react";
 
 const DEFAULT_REVIEWS = [
-  { id: 1, name: "Alex P.", rating: 5, text: "Sold my cracked iPhone 12 and got a great price. Payment arrived the same day!", source: "Google Reviews", date: "Sep 2025" },
+  { id: 1, name: "Alex P.", rating: 5, text: "Sold my cracked Samsung Galaxy S21 and got a great price. Payment arrived the same day!", source: "Google Reviews", date: "Sep 2025" },
   { id: 2, name: "Hannah W.", rating: 5, text: "Best price I found for my old Samsung. The whole process was easy and transparent.", source: "Google Reviews", date: "Aug 2025" },
   { id: 3, name: "Mohammed R.", rating: 5, text: "My phone had water damage but they still bought it. Quick payment via bank transfer.", source: "Google Reviews", date: "Aug 2025" },
   { id: 4, name: "Grace T.", rating: 4, text: "Fair quote for my broken Pixel. They explained everything clearly and payment was fast.", source: "Google Reviews", date: "Jul 2025" },
