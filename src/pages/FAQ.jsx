@@ -70,7 +70,7 @@ export default function FAQ() {
   return (
     <>
       <Helmet>
-        <title>FAQ — PhoneFlip</title>
+        <title>FAQ — Readtech</title>
         <meta name="description" content="Common questions about selling your phone, accepted conditions, payment, data privacy, and our buying process." />
       </Helmet>
 

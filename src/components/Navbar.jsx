@@ -24,7 +24,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200">
       <Container className="py-3 flex items-center justify-between">
-        <Link to="/" className="font-bold text-xl tracking-tight">PhoneFlip</Link>
+        <Link to="/" className="font-bold text-xl tracking-tight">Readtech</Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6 text-sm">

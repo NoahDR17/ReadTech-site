@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>PhoneFlip — We Buy Old &amp; Broken Phones</title>
+        <title>Readtech — We Buy Old &amp; Broken Phones</title>
         <meta
           name="description"
           content="Sell your old, broken, or unwanted phone for cash. We buy all brands and conditions including cracked screens, faulty batteries, and water damage."
@@ -64,7 +64,7 @@ export default function Home() {
         Turn Your Old Phone Into Cash in 3 Easy Steps
       </h2>
       <p className="mt-4 text-lg text-gray-600">
-        At <span className="font-semibold">PhoneFlip</span>, we make selling your phone
+        At <span className="font-semibold">Readtech</span>, we make selling your phone
         quick, secure, and transparent. Whether it's cracked, broken, or just outdated —
         we'll give you a fair price.
       </p>

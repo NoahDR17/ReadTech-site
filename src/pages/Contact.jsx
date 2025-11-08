@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact — PhoneFlip</title>
+        <title>Contact — Readtech</title>
         <meta
           name="description"
           content="Get in touch with us to sell your phone via phone, email, or WhatsApp."

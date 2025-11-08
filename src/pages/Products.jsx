@@ -24,7 +24,7 @@ export default function Products() {
   return (
     <>
       <Helmet>
-        <title>What We Buy — PhoneFlip</title>
+        <title>What We Buy — Readtech</title>
         <meta name="description" content="We buy phones in all conditions from all major brands. Apple, Samsung, Google Pixel, and more." />
       </Helmet>
 
