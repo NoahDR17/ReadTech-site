@@ -6,7 +6,7 @@ export default function Quote() {
   const [form, setForm] = useState({
     name: "", phone: "", email: "",
     deviceModel: "", storage: "", condition: "",
-    imei: "", issue: "",
+    issue: "",
   });
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState("");
@@ -28,7 +28,7 @@ export default function Quote() {
       setSubmitting(true); setMessage("");
       await new Promise((r) => setTimeout(r, 800)); // replace with real endpoint
       setMessage("Thanks! We'll get back to you shortly with a quote for your device.");
-      setForm({ name: "", phone: "", email: "", deviceModel: "", storage: "", condition: "", imei: "", issue: "" });
+      setForm({ name: "", phone: "", email: "", deviceModel: "", storage: "", condition: "", issue: "" });
     } catch {
       setMessage("Something went wrong. Please try again or WhatsApp us.");
     } finally {
@@ -98,11 +98,7 @@ export default function Quote() {
                 <option value="other-issues">Other issues</option>
               </select>
             </div>
-            <div className="grid gap-1 md:col-span-2">
-              <label className="text-sm">IMEI (optional but helps us give accurate quotes)</label>
-              <input name="imei" value={form.imei} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" placeholder="15-digit IMEI number (dial *#06# to find it)" />
-              <p className="text-xs text-gray-500">Dial *#06# on your phone to find your IMEI number</p>
-            </div>
+
             <div className="grid gap-1 md:col-span-2">
               <label className="text-sm">Additional details / Issues</label>
               <textarea name="issue" value={form.issue} onChange={updateField} className="rounded-xl border border-gray-300 p-3 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all" rows={4} placeholder="Please describe any issues with your phone: screen damage, battery problems, physical damage, etc." />
