@@ -47,7 +47,7 @@ export default function Home() {
             </p>
           </div>
           <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-gray-100 to-gray-50 shadow-sm flex items-center justify-center border border-gray-200 overflow-hidden">
-            <img src={p2} alt="phone image" className="w-full h-full object-cover rounded-3xl" />
+            <img src={p2} alt="phone image" className="w-full h-full object-cover" />
           </div>
         </Container>
       </section>
@@ -129,7 +129,7 @@ export default function Home() {
       <div className="md:col-span-5">
         <div className="relative rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
           <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center border border-gray-200 overflow-hidden">
-            <img src={p1} alt="phone image" className="w-full h-full object-cover rounded-2xl" />
+            <img src={p1} alt="phone image" className="w-full h-full object-cover" />
           </div>
 
           {/* Overlays / trust badges */}
