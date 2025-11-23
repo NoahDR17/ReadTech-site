@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import ReviewsSlider from "../components/ReviewsSlider.jsx";
 import p2 from "../assets/p2.jpg";
+import p1 from "../assets/p1.jpg";
 
 export default function Home() {
   return (
@@ -130,7 +131,9 @@ export default function Home() {
       <div className="md:col-span-5">
         <div className="relative rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
           <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center border border-gray-200">
-            <span className="text-7xl" aria-hidden>📱</span>
+            <span className="text-7xl" aria-hidden>
+            <img src={p2} alt="phone image" />
+            </span>
           </div>
 
           {/* Overlays / trust badges */}
