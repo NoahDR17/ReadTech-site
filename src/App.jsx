@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 import Home from "./pages/Home.jsx";
 import Products from "./pages/Products.jsx";
 import Quote from "./pages/Quote.jsx";
@@ -11,6 +12,7 @@ import NotFound from "./pages/NotFound.jsx";
 export default function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
+      <ScrollToTop />
       <Navbar />
       <main>
         <Routes>
