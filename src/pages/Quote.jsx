@@ -1,6 +1,42 @@
 import { Helmet } from "@dr.pogodin/react-helmet";
 import Container from "../components/Container.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+// Placeholder pricing logic - these values can be updated later
+const PRICING = {
+  basePrice: {
+    "iphone 15": 600,
+    "iphone 14": 500,
+    "iphone 13": 400,
+    "iphone 12": 300,
+    "iphone 11": 250,
+    "samsung galaxy s23": 500,
+    "samsung galaxy s22": 400,
+    "samsung galaxy s21": 300,
+    "google pixel 8": 450,
+    "google pixel 7": 350,
+    "default": 200, // Default price for unlisted models
+  },
+  storageMultiplier: {
+    "64GB": 1.0,
+    "128GB": 1.1,
+    "256GB": 1.2,
+    "512GB": 1.3,
+    "1TB": 1.4,
+    "other": 1.0,
+    "": 1.0,
+  },
+  conditionMultiplier: {
+    "working": 1.0,
+    "minor-damage": 0.85,
+    "cracked-screen": 0.7,
+    "faulty-battery": 0.65,
+    "water-damage": 0.5,
+    "wont-turn-on": 0.4,
+    "other-issues": 0.6,
+    "": 1.0,
+  },
+};
 
 export default function Quote() {
   const [form, setForm] = useState({
@@ -10,6 +46,49 @@ export default function Quote() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState("");
+  const [estimatedQuote, setEstimatedQuote] = useState(null);
+
+  // Calculate estimated quote based on form inputs
+  useEffect(() => {
+    if (form.deviceModel && form.condition) {
+      const quote = calculateQuote(form.deviceModel, form.storage, form.condition);
+      setEstimatedQuote(quote);
+    } else {
+      setEstimatedQuote(null);
+    }
+  }, [form.deviceModel, form.storage, form.condition]);
+
+  function calculateQuote(deviceModel, storage, condition) {
+    // Normalize device model for matching (lowercase, trim)
+    const normalizedModel = deviceModel.toLowerCase().trim();
+    
+    // Find base price - try exact match first, then partial match, then default
+    let basePrice = PRICING.basePrice.default;
+    
+    // Check for exact or partial matches
+    for (const [model, price] of Object.entries(PRICING.basePrice)) {
+      if (model !== "default" && normalizedModel.includes(model)) {
+        basePrice = price;
+        break;
+      }
+    }
+    
+    // Apply storage multiplier
+    const storageMultiplier = PRICING.storageMultiplier[storage] || 1.0;
+    
+    // Apply condition multiplier
+    const conditionMultiplier = PRICING.conditionMultiplier[condition] || 1.0;
+    
+    // Calculate final quote
+    const finalQuote = Math.round(basePrice * storageMultiplier * conditionMultiplier);
+    
+    return {
+      basePrice,
+      storageMultiplier,
+      conditionMultiplier,
+      finalQuote,
+    };
+  }
 
   function updateField(e) {
     const { name, value } = e.target;
@@ -98,6 +177,49 @@ export default function Quote() {
                 <option value="other-issues">Other issues</option>
               </select>
             </div>
+
+            {/* Estimated Quote Display */}
+            {estimatedQuote && (
+              <div className="md:col-span-2 rounded-2xl border-2 border-brand bg-brand/5 p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wide">Estimated Quote</h3>
+                    <p className="text-4xl font-bold text-brand mt-1">£{estimatedQuote.finalQuote}</p>
+                    <p className="text-sm text-gray-600 mt-2">
+                      This is an estimate based on the information provided. Final price confirmed after device inspection.
+                    </p>
+                  </div>
+                  <div className="text-6xl" role="img" aria-label="money">💰</div>
+                </div>
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <details className="text-sm text-gray-600">
+                    <summary className="cursor-pointer font-semibold hover:text-brand transition-colors">
+                      See price breakdown
+                    </summary>
+                    <div className="mt-3 space-y-2 pl-4">
+                      <div className="flex justify-between">
+                        <span>Base price for device:</span>
+                        <span className="font-medium">£{estimatedQuote.basePrice}</span>
+                      </div>
+                      {form.storage && (
+                        <div className="flex justify-between">
+                          <span>Storage adjustment ({form.storage}):</span>
+                          <span className="font-medium">×{estimatedQuote.storageMultiplier.toFixed(1)}</span>
+                        </div>
+                      )}
+                      <div className="flex justify-between">
+                        <span>Condition adjustment:</span>
+                        <span className="font-medium">×{estimatedQuote.conditionMultiplier.toFixed(2)}</span>
+                      </div>
+                      <div className="flex justify-between pt-2 border-t border-gray-300 font-semibold">
+                        <span>Estimated total:</span>
+                        <span className="text-brand">£{estimatedQuote.finalQuote}</span>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            )}
 
             <div className="grid gap-1 md:col-span-2">
               <label className="text-sm">Additional details / Issues</label>
