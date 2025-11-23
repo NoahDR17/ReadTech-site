@@ -2,6 +2,7 @@ import { Helmet } from "@dr.pogodin/react-helmet";
 import { Link } from "react-router-dom";
 import Container from "../components/Container.jsx";
 import ReviewsSlider from "../components/ReviewsSlider.jsx";
+import p2 from "../assets/p2.jpg";
 
 export default function Home() {
   return (
@@ -46,7 +47,7 @@ export default function Home() {
           </div>
           <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-gray-100 to-gray-50 shadow-sm flex items-center justify-center border border-gray-200">
             <div className="text-7xl" aria-hidden>
-              <img src="src/assets/p2.jpg" alt="phone image" />
+            <img src={p2} alt="phone image" />
             </div>
           </div>
         </Container>
