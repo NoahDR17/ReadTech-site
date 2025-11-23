@@ -62,12 +62,17 @@ export default function Quote() {
     // Normalize device model for matching (lowercase, trim)
     const normalizedModel = deviceModel.toLowerCase().trim();
     
-    // Find base price - try exact match first, then partial match, then default
+    // Find base price - match from longest to shortest to avoid partial matches
     let basePrice = PRICING.basePrice.default;
     
-    // Check for exact or partial matches
-    for (const [model, price] of Object.entries(PRICING.basePrice)) {
-      if (model !== "default" && normalizedModel.includes(model)) {
+    // Sort models by length (descending) to match longer names first
+    const sortedModels = Object.entries(PRICING.basePrice)
+      .filter(([model]) => model !== "default")
+      .sort((a, b) => b[0].length - a[0].length);
+    
+    // Check for matches
+    for (const [model, price] of sortedModels) {
+      if (normalizedModel.includes(model)) {
         basePrice = price;
         break;
       }
@@ -201,16 +206,18 @@ export default function Quote() {
                         <span>Base price for device:</span>
                         <span className="font-medium">£{estimatedQuote.basePrice}</span>
                       </div>
-                      {form.storage && (
+                      {form.storage && estimatedQuote.storageMultiplier !== 1.0 && (
                         <div className="flex justify-between">
                           <span>Storage adjustment ({form.storage}):</span>
                           <span className="font-medium">×{estimatedQuote.storageMultiplier.toFixed(1)}</span>
                         </div>
                       )}
-                      <div className="flex justify-between">
-                        <span>Condition adjustment:</span>
-                        <span className="font-medium">×{estimatedQuote.conditionMultiplier.toFixed(2)}</span>
-                      </div>
+                      {estimatedQuote.conditionMultiplier !== 1.0 && (
+                        <div className="flex justify-between">
+                          <span>Condition adjustment:</span>
+                          <span className="font-medium">×{estimatedQuote.conditionMultiplier.toFixed(2)}</span>
+                        </div>
+                      )}
                       <div className="flex justify-between pt-2 border-t border-gray-300 font-semibold">
                         <span>Estimated total:</span>
                         <span className="text-brand">£{estimatedQuote.finalQuote}</span>
