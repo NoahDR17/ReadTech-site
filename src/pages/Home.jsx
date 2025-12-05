@@ -77,10 +77,10 @@ export default function Home() {
         {/* Value props */}
         <ul className="grid sm:grid-cols-2 gap-4">
           {[
-            { icon: "💰", title: "Best prices", desc: "Competitive offers for phones in any condition." },
-            { icon: "⚡", title: "Fast payment", desc: "Instant bank transfer or cash once we verify your device." },
-            { icon: "🔒", title: "Data wiped safely", desc: "We securely erase all your personal data." },
-            { icon: "📦", title: "Free postage", desc: "Use our insured mail-in service across the UK." },
+            { icon: "", title: "Best prices", desc: "Competitive offers for phones in any condition." },
+            { icon: "", title: "Fast payment", desc: "Instant bank transfer or cash once we verify your device." },
+            { icon: "", title: "Data wiped safely", desc: "We securely erase all your personal data." },
+            { icon: "", title: "Free postage", desc: "Use our insured mail-in service across the UK." },
           ].map((item) => (
             <li key={item.title} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-brand transition-all">
               <div className="text-2xl" aria-hidden>{item.icon}</div>
@@ -103,7 +103,7 @@ export default function Home() {
         {/* Stats row */}
         <div className="mt-8 grid sm:grid-cols-3 gap-4">
           {[
-            { k: "10,000+", v: "Phones purchased" },
+            { k: "200+", v: "Phones purchased" },
             { k: "Same day", v: "Payment time" },
             { k: "4.9★",   v: "Customer rating" },
           ].map((s) => (

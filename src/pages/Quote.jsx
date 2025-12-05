@@ -573,9 +573,9 @@ export default function Quote() {
                       your device.
                     </p>
                   </div>
-                  <div className="text-6xl" role="img" aria-label="money">
+                  {/* <div className="text-6xl" role="img" aria-label="money">
                     💰
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="mt-4 pt-4 border-t border-gray-200">
@@ -639,7 +639,7 @@ export default function Quote() {
 
           {/* What happens next */}
           <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6">
-            <h3 className="font-semibold mb-2">📋 What happens next?</h3>
+            <h3 className="font-semibold mb-2">What happens next?</h3>
             <ul className="text-sm text-gray-600 space-y-2">
               <li>• We confirm your quote via WhatsApp, phone or email</li>
               <li>

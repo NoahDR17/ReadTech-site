@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 export default function Products() {
   const brands = [
-    { name: "Google", models: "Pixel 2 and newer", icon: "🔍" },
-    { name: "Samsung", models: "Galaxy S8 and newer, Note series", icon: "📱" },
-    { name: "Apple", models: "iPhone 8 and newer", icon: "🍎" },
+    { name: "Google", models: "Pixel 2 and newer", icon: "" },
+    { name: "Samsung", models: "Galaxy S8 and newer, Note series", icon: "" },
+    { name: "Apple", models: "iPhone 8 and newer", icon: "" },
   ];
 
   const conditions = [
