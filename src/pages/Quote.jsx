@@ -9,7 +9,7 @@ const PRICING = {
   basePrice: {
     // ==== iPhone 11 family ====
     "iphone 11": {
-      "64GB": 92,
+      "64GB": 93,
       "128GB": 80,
     },
     "iphone 11 pro": {
